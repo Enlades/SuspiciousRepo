@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZyngaDemo.GameLogic{
+    ///<summary>
+    /// Not used right now, GameTileArrengement is doing it's job
+    ///</summary>
     public class GameTileHand
     {
         public GameTileGroup EveryTile;

@@ -5,6 +5,9 @@ using UnityEngine;
 using ZyngaDemo.GameLogic;
 
 namespace ZyngaDemo.Unity{
+    ///<summary>
+    /// The hardworker
+    ///</summary>
     public class GameManager : MonoBehaviour
     {
         public GameDeckController GameDeckController;
@@ -14,6 +17,9 @@ namespace ZyngaDemo.Unity{
 
         public PrefabManager PrefabManager;
 
+        ///<summary>
+        /// Player hand is kept as a reference on GameManager
+        ///</summary>
         private GameTileGroup _playerHand;
 
         private void Awake(){
@@ -28,6 +34,9 @@ namespace ZyngaDemo.Unity{
             GameDeckController.CreateGameTiles(PrefabManager.GameTileViewPrefab, ()=>{DeckRevealFinished();});
         }
 
+        ///<summary>
+        /// Callback for the Deck reveal
+        ///</summary>
         private void DeckRevealFinished(){
             UIController.ShowGamePanel();
 
@@ -63,6 +72,9 @@ namespace ZyngaDemo.Unity{
             StartCoroutine(UnOrganizedDelay());
         }
 
+        ///<summary>
+        /// After deck reset, there is no callback, we just wait manually
+        ///</summary>
         private IEnumerator UnOrganizedDelay(){
             yield return new WaitForSeconds(1f);
 

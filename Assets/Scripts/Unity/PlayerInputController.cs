@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZyngaDemo.Unity{
+    ///<summary>
+    /// Kinda hardcoded, but works
+    ///</summary>
     public class PlayerInputController : MonoBehaviour
     {
+        // This field is used during touch up to stop user from messing up the Coroutines
         public bool CanTakeInput;
 
+        // Used during search for BoardSlotView
         private BoardView _playerBoard;
+
         private GameTileView _selectedView;
+
+        // The tiles in the middle of the screen can also be interacted with,
+        // The Vector3 field is there to return them back
         private BoardSlotView _lastBoardSlot;
         private Vector3 _lastPosition;
 
@@ -61,6 +70,9 @@ namespace ZyngaDemo.Unity{
             }
         }
 
+        ///<summary>
+        /// Contains wierd double if becuse of the last day rush inside BoardView
+        ///</summary>
         private bool FindPosition(out BoardSlotView p_boardView){
             for(int i = 0; i < _playerBoard.UpperPositions.Length; i++){
                 if (Vector2.Distance(_playerBoard.UpperPositions[i].transform.position, _selectedView.transform.position) < 1f
@@ -82,6 +94,9 @@ namespace ZyngaDemo.Unity{
             return false;
         }
 
+        ///<summary>
+        /// Used during touch and drag
+        ///</summary>
         private void MoveViewToWorldPosition(Vector2 p_screenPosition){
             Vector3 targetPosition = Vector3.zero;
             targetPosition = Camera.main.ScreenToWorldPoint(p_screenPosition);

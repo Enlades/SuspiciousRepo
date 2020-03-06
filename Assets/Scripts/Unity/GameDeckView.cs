@@ -5,6 +5,9 @@ using UnityEngine;
 using ZyngaDemo.GameLogic;
 
 namespace ZyngaDemo.Unity{
+    ///<summary>
+    /// View for the tiles in the middle of the screen representing our deck.
+    ///</summary>
     public class GameDeckView : MonoBehaviour
     {
         public Transform StackPositionsParent;

@@ -24,9 +24,16 @@
             TileColor = (p_tileIndex % 52) / 13;
         }
 
+        ///<summary>
+        /// Used for debugging purposes
+        ///</summary>
         public override string ToString(){
             return "<color=" + ColorIntToString(TileColor) + ">" + TileNumber + "</color>";
         }
+
+        ///<summary>
+        /// Used for debugging purposes
+        ///</summary>
 
         public string ToStringDetailed(){
             return "<color=" + ColorIntToString(TileColor) + ">" + TileNumber + "</color> :: " + TileIndex;
@@ -41,19 +48,32 @@
             return p_gameTile.TileColor == TileColor;
         }
 
+        ///<summary>
+        /// This was supposed to be used during Okey tile comparsion, not implemented
+        ///</summary>
         public bool CompareTile(GameTile p_gameTile)
         {
             return TileIndex % 52 == p_gameTile.TileIndex % 52;
         }
 
+        ///<summary>
+        /// Arrangement algorithms create every possible GameTileGroups as if every tile is available multiple times, 
+        /// this method is used for finding any collisions between groups so that the final Group only has unique tiles
+        ///</summary>
         public bool IsDuplicateOf(GameTile p_gameTile){
             return TileIndex == p_gameTile.TileIndex;
         }
 
+        ///<summary>
+        /// Used for finding tiles for SortByColor
+        ///</summary>
         public bool IsNextOf(GameTile p_gameTile){
             return p_gameTile.TileNumber == (TileNumber + 1);
         }
 
+        ///<summary>
+        /// Used for debugging purposes
+        ///</summary>
         private static string ColorIntToString(int p_tileColor){
             switch (p_tileColor)
             {

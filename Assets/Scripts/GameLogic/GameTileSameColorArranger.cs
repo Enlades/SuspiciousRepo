@@ -7,6 +7,9 @@ namespace ZyngaDemo.GameLogic{
     {
         public GameTileSameColorArranger(GameTile p_okeyTile) : base(p_okeyTile) { }
 
+        ///<summary>
+        /// Grouping method that works on o(n^2) since GameTileGroup is iterated for every GameTile inside the group
+        ///</summary>
         protected GameTileGroup GroupMethod(GameTile p_selectedTile, GameTileGroup p_gameTileGroup)
         {
             GameTileGroup result = new GameTileGroup();
@@ -25,6 +28,9 @@ namespace ZyngaDemo.GameLogic{
             return result;
         }
 
+        ///<summary>
+        /// Works fine for itself
+        ///</summary>
         protected override GameTileGroup[] FindAll(GameTileGroup p_copiedGroup)
         {
             List<GameTileGroup> result = new List<GameTileGroup>();

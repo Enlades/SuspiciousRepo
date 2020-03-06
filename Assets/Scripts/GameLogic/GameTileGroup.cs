@@ -6,20 +6,32 @@ namespace ZyngaDemo.GameLogic{
 
     public class GameTileGroup
     {
+        ///<summary>
+        /// Oh i love using this. Shortcut for accessing GameTiles
+        ///</summary>
         public GameTile this[int index]{
             get{
                 return GameTiles[index];
             }
         }
 
+        ///<summary>
+        /// Shortcut
+        ///</summary>
         public int GameTileCount{
             get{
                 return GameTiles.Count;
             }
         }
 
+        ///<summary>
+        /// The GameTiles
+        ///</summary>
         public List<GameTile> GameTiles {get; private set;}
 
+        ///<summary>
+        /// Here are those static people, used for Comparisons
+        ///</summary>
         private static GameTileNumberComparer _numberComparer = new GameTileNumberComparer();
         private static GameTileColorComparer _colorComparer = new GameTileColorComparer();
 
@@ -33,6 +45,11 @@ namespace ZyngaDemo.GameLogic{
 
         public GameTileGroup(GameTileGroup p_gameTileGroup) : this(p_gameTileGroup.GameTiles.ToArray()){}
 
+
+        ///<summary>
+        /// The warning inside is for Debugging purposes,
+        /// that should never be called, if so the Sorting algorithm messed up
+        ///</summary>
         public void AddGameTile(GameTile p_gameTile)
         {
             if (HasDuplicate(p_gameTile))
@@ -43,6 +60,10 @@ namespace ZyngaDemo.GameLogic{
             GameTiles.Add(p_gameTile);
         }
 
+        ///<summary>
+        /// The warning inside is for Debugging purposes,
+        /// that should never be called, if so the Sorting algorithm messed up
+        ///</summary>
         public void AddGroup(GameTileGroup p_gameTileGroup)
         {
             if (HasDuplicateGroup(p_gameTileGroup))
@@ -87,6 +108,9 @@ namespace ZyngaDemo.GameLogic{
             return result;
         }
 
+        ///<summary>
+        /// Unfinished code
+        ///</summary>
         public bool ContainsOkey(GameTile p_okeyTile){            
             for(int i = 0; i < GameTileCount; i++){
                 if(GameTiles[i].CompareTile(p_okeyTile)){
@@ -97,6 +121,9 @@ namespace ZyngaDemo.GameLogic{
             return false;
         }
 
+        ///<summary>
+        /// Used during sorting algorithms, for collision control
+        ///</summary>
         public bool HasDuplicate(GameTile p_gameTile)
         {
             for (int i = 0; i < GameTileCount; i++)
@@ -110,6 +137,9 @@ namespace ZyngaDemo.GameLogic{
             return false;
         }
 
+        ///<summary>
+        /// Used during sorting algorithms, for collision control
+        ///</summary>
         public bool HasDuplicateGroup(GameTileGroup p_gameTileGroup)
         {
             for (int i = 0; i < p_gameTileGroup.GameTileCount; i++)

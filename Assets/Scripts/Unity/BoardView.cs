@@ -5,12 +5,16 @@ using UnityEngine;
 namespace ZyngaDemo.Unity{
     public class BoardView : MonoBehaviour
     {
+        // Last day rush 
         public Transform UpperPositionsParent;
         public Transform LowerPositionsParent;
 
         public BoardSlotView[] UpperPositions{get; private set;}
         public BoardSlotView[] LowerPositions{get; private set;}
 
+        ///<summary>
+        /// This cursor iterates between BoardSlotViews
+        ///</summary>
         private int PositionCursor
         {
             get{
@@ -60,6 +64,9 @@ namespace ZyngaDemo.Unity{
             }
         }
 
+        ///<summary>
+        /// PlayerHandController calls this after drawing a tile to hand to find positions to it
+        ///</summary>
         public BoardSlotView GetNextPosition(){
             if(_isUpper){
                 UpperPositions[PositionCursor].Fill();
@@ -81,6 +88,9 @@ namespace ZyngaDemo.Unity{
             _isUpper = true;
         }
 
+        ///<summary>
+        /// PlayerHandContoller calls this after finishing a group
+        ///</summary>
         public void SkipPosition(){
             PositionCursor++;
         }

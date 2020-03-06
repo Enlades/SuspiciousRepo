@@ -9,6 +9,7 @@ namespace ZyngaDemo.Unity{
     {
         public BoardView PlayerBoard;
 
+        // Every GameTileView also has reference to their GameTile
         public GameTileGroup PlayerHand{get; private set;}
         public List<GameTileView> PlayerHandViews{get; private set;}
 
@@ -22,6 +23,9 @@ namespace ZyngaDemo.Unity{
             PlayerHand.AddGameTile(p_gameTileView.GameTile);
         }
 
+        ///<summary>
+        /// GameManager should call this when the time is right
+        ///</summary>
         public void DealHand(GameTileArranger p_arranger)
         {
             PlayerBoard.Reset();
@@ -48,6 +52,10 @@ namespace ZyngaDemo.Unity{
             PlayerBoard.Reset();
         }
 
+        ///<summary>
+        /// Ah yes, since the sorter returns me GameTiles, there is this method to find the View that actually uses it.
+        /// There should be another layer above Sorter and this controller
+        ///</summary>
         private GameTileView FindView(GameTile p_gameTile){
             for(int i = 0; i < PlayerHandViews.Count; i++){
                 if(PlayerHandViews[i].GameTile.TileIndex == p_gameTile.TileIndex){

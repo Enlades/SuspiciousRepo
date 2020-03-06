@@ -6,6 +6,9 @@ using System;
 using ZyngaDemo.GameLogic;
 
 namespace ZyngaDemo.Unity{
+    ///<summary>
+    /// Works similar to the GameTileDeck
+    ///</summary>
     public class GameDeckController : MonoBehaviour
     {
         public GameDeckView GameDeckView;
@@ -17,6 +20,9 @@ namespace ZyngaDemo.Unity{
 
         private GameObject _gameTileViewsParent;
 
+        ///<summary>
+        /// Unfinished code
+        ///</summary>
         private GameTileView _dummyOkeyTile;
 
         private int _deckCursor;
@@ -30,6 +36,9 @@ namespace ZyngaDemo.Unity{
             _gameTileViewsParent = new GameObject("GameTileViewsParent");
         }
 
+        ///<summary>
+        /// Callback is managed by GameManager
+        ///</summary>
         public void CreateGameTiles(GameTileView p_gameTilePrefab, Action p_callback){
             GameTiles = new GameTileView[GameTileDeck.DECK_SIZE];
 

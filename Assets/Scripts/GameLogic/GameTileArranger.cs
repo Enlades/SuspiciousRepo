@@ -5,6 +5,9 @@ using UnityEngine;
 namespace ZyngaDemo.GameLogic{
     public abstract class GameTileArranger
     {
+        ///<summary>
+        /// Unfinished code
+        ///</summary>
         protected GameTile _okeyTile;
 
         public GameTileArranger(GameTile p_okeyTile)
@@ -12,11 +15,23 @@ namespace ZyngaDemo.GameLogic{
             _okeyTile = p_okeyTile;
         }
 
+        ///<summary>
+        /// This is the function that findsevery possible grouping that is possible with given GameTileGroup
+        /// GameTileSmartArranger, GameTileSameNumberArrnger and GameTileSameColorArranger implement this in their own way/
+        ///</summary>
         protected abstract GameTileGroup[] FindAll(GameTileGroup p_copiedGroup);
+
+        ///<summary>
+        /// Unfinished code
+        ///</summary>
         protected virtual void OkeyTreatment(GameTileGroup p_copiedGroup){
 
         }
 
+        ///<summary>
+        /// No matter the algorithm, the GameTileGroup is treated with same sequence.
+        /// Some of the methods inside are implemented seperately.
+        ///</summary>
         public GameTileGroup[] Arrange(GameTileGroup p_originalGroup){
             List<GameTileGroup> result = new List<GameTileGroup>();
 
@@ -50,6 +65,11 @@ namespace ZyngaDemo.GameLogic{
             return arrangementResult.ToArray();
         }
 
+        ///<summary>
+        /// Input parameter contains every possible GameTileGroup, with duplicates.
+        /// First GameTileGroups are sorted by Score, then o(n^2) to find every arrengement with no collisions.
+        /// This function worked great for SameNumber/SameColor sort, not so great for SmartSort.
+        ///</summary>
         protected virtual GameTileArrangement[] FindFeasibles(GameTileGroup[] p_possibilities)
         {
             p_possibilities = SortByScore(p_possibilities);
@@ -74,6 +94,10 @@ namespace ZyngaDemo.GameLogic{
             return feasbileArrangements.ToArray();
         }
 
+        ///<summary>
+        /// Somewhere between FindAll nd FindFeasibles, some GameTile's are lost depending on GameTileGroup that ha our 14 original tiles.
+        /// This only happens for SmartSort, this function adds the lost Tiles which will be added as remainder to the arrengement.
+        ///</summary>
         private void FindMissings(GameTileGroup p_everyTile, GameTileArrangement[] p_arrangements){
             for(int i = 0; i < p_arrangements.Length; i++){
                 for(int j = 0; j < p_everyTile.GameTileCount; j++){
@@ -84,6 +108,9 @@ namespace ZyngaDemo.GameLogic{
             }
         }
 
+        ///<summary>
+        /// This shouldn't be here but yeah, sorts the array by score.
+        ///</summary>
         protected GameTileGroup[] SortByScore(GameTileGroup[] p_possibilities){
             GameTileGroup swapTemp = null;
             int highestScore = -1;

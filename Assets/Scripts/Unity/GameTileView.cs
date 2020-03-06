@@ -7,6 +7,9 @@ using TMPro;
 using ZyngaDemo.GameLogic;
 
 namespace ZyngaDemo.Unity{
+    ///<summary>
+    /// Tightly coupled view
+    ///</summary>
     public class GameTileView : MonoBehaviour
     {
         public TextMeshPro TileText;

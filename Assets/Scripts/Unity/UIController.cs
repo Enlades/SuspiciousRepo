@@ -5,6 +5,9 @@ using UnityEngine.UI;
 using System;
 
 namespace ZyngaDemo.Unity{
+    ///<summary>
+    /// Just UI
+    ///</summary>
     public class UIController : MonoBehaviour
     {
         public GameObject GamePanel;

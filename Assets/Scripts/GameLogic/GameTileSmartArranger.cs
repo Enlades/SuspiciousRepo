@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZyngaDemo.GameLogic{
+
+    ///<summary>
+    /// Here comes the Frankenstein's monster
+    ///</summary>
     public class GameTileSmartArranger : GameTileArranger
     {
         public GameTileSmartArranger(GameTile p_okeyTile) : base(p_okeyTile) { }
 
+        ///<summary>
+        /// Unfinished code, i was thinking of removing OkeyTile first,
+        /// find every possibilty, add OkeyTile to a single possiblity and try to generate ne Groups later to be generated as arrrangements
+        ///</summary>
         protected override void OkeyTreatment(GameTileGroup p_copiedGroup){
             p_copiedGroup.RemoveTile(_okeyTile);
         }
 
+        ///<summary>
+        /// Yep, so smart it contains duplicate code
+        ///</summary>
         protected GameTileGroup SameNumberGroupMethod(GameTile p_selectedTile, GameTileGroup p_gameTileGroup)
         {
             GameTileGroup result = new GameTileGroup();
@@ -40,6 +51,9 @@ namespace ZyngaDemo.GameLogic{
             return result;
         }
 
+        ///<summary>
+        /// Duplicate code
+        ///</summary>
         protected GameTileGroup SameColorGroupMethod(GameTile p_selectedTile, GameTileGroup p_gameTileGroup)
         {
             GameTileGroup result = new GameTileGroup();
@@ -58,6 +72,9 @@ namespace ZyngaDemo.GameLogic{
             return result;
         }
 
+        ///<summary>
+        /// This is NOT working fine
+        ///</summary>
         protected override GameTileGroup[] FindAll(GameTileGroup p_copiedGroup)
         {
             List<GameTileGroup> result = new List<GameTileGroup>();

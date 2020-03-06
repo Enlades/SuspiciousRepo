@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace ZyngaDemo.GameLogic{
 
+    ///<summary>
+    /// Not used anywhere, same as GameTileHand, this was going to extend GameTileHand
+    ///</summary>
     public class PlayerHand{
 
         public GameTileGroup EveryTile;

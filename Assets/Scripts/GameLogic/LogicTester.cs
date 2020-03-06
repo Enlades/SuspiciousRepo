@@ -4,6 +4,9 @@ using UnityEngine;
 
 using ZyngaDemo.GameLogic;
 
+///<summary>
+/// Used during OnGUI deubugging, good old times
+///</summary>
 public class LogicTester : MonoBehaviour
 {
     private GameTileDeck _deck;
